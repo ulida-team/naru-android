@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "naru-android"
-include ':app'
+include(":app")
