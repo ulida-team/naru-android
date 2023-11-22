@@ -1,16 +1,18 @@
+@file:Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.naru.android.application.hilt)
 }
 
 android {
     namespace = "com.ulida.naru_android"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.ulida.naru_android"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -34,7 +36,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packagingOptions {
         resources {
@@ -42,18 +44,13 @@ android {
         }
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
-    }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
+        kotlinCompilerExtensionVersion = "1.4.6"
     }
 }
 
