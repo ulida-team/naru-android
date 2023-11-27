@@ -6,6 +6,7 @@ defmodule ModuleGenerator do
     case Enum.at(input, 0) do
       "-d" -> description()
       "-f" -> generateFeatureModule(Enum.at(input, 1))
+      _ -> IO.puts "else case!!"
     end
   end
 
