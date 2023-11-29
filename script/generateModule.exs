@@ -15,7 +15,19 @@ defmodule ModuleGenerator do
   end
 
   def generateFeatureModule(moduleName) do
-    IO.puts moduleName
+    IO.puts("-----------------------\nstarting generate module")
+    File.cd!("..")
+    File.cd!("feature")
+    IO.puts("create feature module")
+    File.mkdir_p!("#{moduleName}")
+    File.cd!("#{moduleName}")
+    generateIgnore()
+  end
+
+  def generateIgnore do
+    #    generate ignore
+    File.write(".gitignore", "/build")
+    IO.puts("gitignore success")
   end
 end
 
