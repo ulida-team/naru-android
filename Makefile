@@ -1,2 +1,2 @@
 module:
-	cd script && elixir GenerateModule.exs
+	cd script && elixir generateModule.exs
