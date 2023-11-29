@@ -23,6 +23,7 @@ defmodule ModuleGenerator do
     File.cd!("#{moduleName}")
     generateIgnore()
     generateGradle()
+    generateConsumer()
   end
 
   def generateIgnore do
@@ -41,6 +42,12 @@ defmodule ModuleGenerator do
       }
       """)
     IO.puts("build.gradle success")
+  end
+
+  def generateConsumer do
+    #    generate consumer-rules
+    File.write("consumer-rules.pro", "")
+    IO.puts("consumer-rules success")
   end
 end
 
