@@ -41,10 +41,10 @@ defmodule ModuleGenerator do
     #    generate build.gradle.kts
     case File.write("build.gradle.kts",
            """
-        @file:Suppress("DSL_SCOPE_VIOLATION")
-        plugins {
-            alias(libs.plugins.naru.android.application.feature)
-        }
+           @file:Suppress("DSL_SCOPE_VIOLATION")
+           plugins {
+              alias(libs.plugins.naru.android.application.feature)
+           }
            """)
       do
       :ok -> IO.puts("build.gradle success")
