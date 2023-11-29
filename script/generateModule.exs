@@ -22,12 +22,25 @@ defmodule ModuleGenerator do
     File.mkdir_p!("#{moduleName}")
     File.cd!("#{moduleName}")
     generateIgnore()
+    generateGradle()
   end
 
   def generateIgnore do
     #    generate ignore
     File.write(".gitignore", "/build")
     IO.puts("gitignore success")
+  end
+
+  def generateGradle do
+    #    generate build.gradle.kts
+    File.write("build.gradle.kts",
+      """
+      @file:Suppress("DSL_SCOPE_VIOLATION")
+      plugins {
+          alias(libs.plugins.naru.android.application.feature)
+      }
+      """)
+    IO.puts("build.gradle success")
   end
 end
 
