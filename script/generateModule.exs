@@ -27,6 +27,7 @@ defmodule ModuleGenerator do
     generateConsumer()
     generateProguard()
     generateLibs()
+    generateSrc(moduleName)
   end
 
   def generateIgnore do
@@ -96,6 +97,21 @@ defmodule ModuleGenerator do
       :error -> IO.puts("libs error")
     end
   end
+
+  def generateSrc(moduleName) do
+    case File.mkdir_p!("src/main/java/com/ulida/#{moduleName}")
+    File.write!("src/main/AndroidManifest.xml", """
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    </manifest>
+    """) do
+      :ok -> IO.puts("src success")
+      :error -> IO.puts("src error")
+    end
+  end
+
+  def
 end
 
 ModuleGenerator.main()
