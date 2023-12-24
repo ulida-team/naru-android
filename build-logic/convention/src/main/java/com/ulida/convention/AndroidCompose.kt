@@ -7,9 +7,7 @@ internal fun Project.configureAndroidCompose(
     commonExtension: CommonExtension<*, *, *, *>,
 ) {
     commonExtension.apply {
-        buildFeatures {
-            compose = true
-        }
+        buildFeatures.compose = true
 
         composeOptions {
             kotlinCompilerExtensionVersion = libs.findVersion("androidxComposeCompiler").get().toString()
