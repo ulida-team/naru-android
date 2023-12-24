@@ -24,9 +24,13 @@ gradlePlugin {
             id = "naru.android.application.hilt"
             implementationClass = "AndroidHiltPlugin"
         }
-        register("androidFeature") {
+        register("androidFeaturePlugin") {
             id = "naru.android.application.feature"
             implementationClass = "AndroidFeaturePlugin"
+        }
+        register("androidKotlinPlugin") {
+            id = "naru.android.application.kotlin"
+            implementationClass = "AndroidKotlinPlugin"
         }
     }
 }
