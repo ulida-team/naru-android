@@ -23,11 +23,12 @@ defmodule ModuleGenerator do
     File.cd!("#{moduleName}")
     IO.puts("---------------------------")
     generateIgnore()
-    generateGradle()
+    generateGradle(moduleName)
     generateConsumer()
     generateProguard()
     generateLibs()
     generateSrc(moduleName)
+    addSetting(moduleName)
   end
 
   def generateIgnore do
@@ -38,11 +39,14 @@ defmodule ModuleGenerator do
     end
   end
 
-  def generateGradle do
+  def generateGradle(moduleName) do
     #    generate build.gradle.kts
     case File.write("build.gradle.kts",
            """
            @file:Suppress("DSL_SCOPE_VIOLATION")
+           android {
+              namespace = "com.ulida.feature:#{moduleName}"
+           }
            plugins {
               alias(libs.plugins.naru.android.application.feature)
            }
@@ -99,19 +103,27 @@ defmodule ModuleGenerator do
   end
 
   def generateSrc(moduleName) do
-    case File.mkdir_p!("src/main/java/com/ulida/#{moduleName}")
+    File.mkdir_p!("src/main/java/com/ulida/#{moduleName}")
+        File.write("src/main/java/com/ulida/#{moduleName}/main.kt", "")
     File.write!("src/main/AndroidManifest.xml", """
     <?xml version="1.0" encoding="utf-8"?>
     <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     </manifest>
-    """) do
-      :ok -> IO.puts("src success")
-      :error -> IO.puts("src error")
-    end
+    """)
   end
 
-  def
+  def addSetting(moduleName) do
+    {:ok, content} = File.read("../../settings.gradle.kts")
+    IO.puts(content)
+    newContent = """
+    include(":feature:#{moduleName}")
+    """
+    case File.write!("../../settings.gradle.kts", content <> newContent) do
+       :ok -> IO.puts("setting success")
+       :error -> IO.puts("setting success")
+    end
+  end
 end
 
 ModuleGenerator.main()
