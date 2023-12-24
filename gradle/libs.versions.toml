@@ -63,3 +63,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 naru-android-application-hilt = { id = "naru.android.application.hilt", version = "unspecified" }
 naru-android-application-feature = { id = "naru.android.application.feature", version = "unspecified" }
+naru-android-application-kotlin = { id = "naru.android.application.kotlin", version = "unspecified" }
